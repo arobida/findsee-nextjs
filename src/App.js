@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import eye from './eye.png';
 import Headroom from 'react-headroom';
+import Eye from './components/Eye'
 
 const App = () => {
 	const [val, setVal] = useState('');
@@ -40,7 +41,8 @@ const App = () => {
 	return (
 		<div className="App">
 			<a href="/">
-				<img src={eye} alt="eyeball" className="eye" />
+				{/* <img src={eye} alt="eyeball" className="eye blink" /> */}
+				<Eye/>
 			</a>
 			<Headroom>
 				<form onSubmit={submit}>

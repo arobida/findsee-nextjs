@@ -51,6 +51,21 @@
   z-index: 5;
 }
 
+.blink {
+  animation: blink-animation 3s steps(3, start) infinite;
+  -webkit-animation: blink-animation 3s steps(3, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    opacity: 0;
+  }
+}
+
 .search{
   width:60vw;
   font-size: 1.3em;
