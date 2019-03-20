@@ -25,9 +25,14 @@ const App = () => {
 		setVal(query);
 		console.log(val);
 	};
+	const toTop = () => {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	};
 	const submit = e => {
 		e.preventDefault();
 		getData();
+		toTop();
 	};
 	return (
 		<div className="App">
