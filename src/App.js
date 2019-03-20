@@ -46,7 +46,7 @@ const App = () => {
 						onChange={change}
 					/>
 				</form>
-				{val ? <span className="results">Showinging results for: {val.slice(1)}</span> : null}
+				{val ? <span className="results">Results for: {val.slice(1)}</span> : null}
 			</Headroom>
 			<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
