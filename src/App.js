@@ -33,6 +33,7 @@ const App = () => {
 		e.preventDefault();
 		getData();
 		toTop();
+		e.target.reset()
 	};
 	return (
 		<div className="App">
@@ -41,7 +42,7 @@ const App = () => {
 					<input
 						className="search"
 						type="text"
-						placeholder="🔎 Show Search 🔍"
+						placeholder="🔎 Shows Search 🔍"
 						onChange={change}
 					/>
 				</form>
