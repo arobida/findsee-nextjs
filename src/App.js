@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import eye from './eye.png';
 import Headroom from 'react-headroom';
 import Eye from './components/Eye'
 
