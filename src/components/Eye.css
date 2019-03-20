@@ -4,7 +4,7 @@
 
   .eyelid {
 	position: fixed;
-	z-index: 5;
+	z-index: 50;
 	top:15px;
 	left:5px;
 	height: 47px;
