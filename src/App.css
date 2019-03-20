@@ -43,6 +43,14 @@
 	}
 }
 
+.eye{
+  position:fixed;
+  width:3em;
+  top:18px;
+  left:5px;
+  z-index: 5;
+}
+
 .search{
   width:60vw;
   font-size: 1.3em;
@@ -50,6 +58,7 @@
   background:#333;
   color:white;
   text-align: center;
+  margin-top:1em;
   margin-bottom:1em;
 }
 .search::placeholder{

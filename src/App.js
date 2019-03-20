@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import eye from './eye.png';
 import Headroom from 'react-headroom';
 
 const App = () => {
@@ -38,6 +39,9 @@ const App = () => {
 	};
 	return (
 		<div className="App">
+			<a href="/">
+				<img src={eye} alt="eyeball" className="eye" />
+			</a>
 			<Headroom>
 				<form onSubmit={submit}>
 					<input
@@ -71,8 +75,8 @@ const App = () => {
 							key: i.show.id,
 							title: i.show.name,
 							rating: i.show.rating.average,
-							net: i.show.network ? i.show.network.name : 'Unknown',
-							netSite: i.show.network ? i.show.officialSite : null,
+							net: i.show.network ? '@' + i.show.network.name : null,
+							netSite: i.show.officialSite ? i.show.officialSite : null,
 							altText: i.show.name.toString(),
 							imgSrc: i.show.image
 								? i.show.image.medium
@@ -85,13 +89,19 @@ const App = () => {
 								<h3 className="rating">Rating: {item.rating}</h3>
 								<img className="pic" alt={item.altText} src={item.imgSrc} />
 								<h3>
-									<a
-										href={item.netSite}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{item.net}
-									</a>
+									<span>
+										{item.netSite ? (
+											<a
+												href={item.netSite}
+												target="_blank"
+												rel="noopener noreferrer"
+												style={{ marginRight: '.5em' }}
+											>
+												Watch Now
+											</a>
+										) : null}
+										<span>{item.net}</span>
+									</span>
 								</h3>
 								<p className="summary">{item.sum}</p>
 							</div>
