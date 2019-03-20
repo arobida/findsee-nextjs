@@ -6,6 +6,7 @@ import Headroom from 'react-headroom';
 const App = () => {
 	const [val, setVal] = useState('');
 	const [shows, setShows] = useState([]);
+	const [results, setResults] = useState(null)
 
 	const getData = async () => {
 		const res = await fetch(`https://api.tvmaze.com/search/shows?q=${val}`);
@@ -23,6 +24,7 @@ const App = () => {
 			.map(k => esc(k) + esc(params[k]))
 			.join('&');
 		setVal(query);
+		setResults(e.target.value)
 		console.log(val);
 	};
 	const toTop = () => {
@@ -46,7 +48,7 @@ const App = () => {
 						onChange={change}
 					/>
 				</form>
-				{val ? <span className="results">Results for: {val.slice(1)}</span> : null}
+				{results ? <span className="results">Results for: {results}</span> : null}
 			</Headroom>
 			<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
