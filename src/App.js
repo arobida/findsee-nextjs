@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Headroom from 'react-headroom';
 
 const App = () => {
 	const [val, setVal] = useState('');
 	const [shows, setShows] = useState([]);
-	const [results, setResults] = useState(null)
+	const [results, setResults] = useState(null);
 
 	const getData = async () => {
 		const res = await fetch(`https://api.tvmaze.com/search/shows?q=${val}`);
@@ -24,7 +23,7 @@ const App = () => {
 			.map(k => esc(k) + esc(params[k]))
 			.join('&');
 		setVal(query);
-		setResults(e.target.value)
+		setResults(e.target.value);
 		console.log(val);
 	};
 	const toTop = () => {
@@ -35,7 +34,7 @@ const App = () => {
 		e.preventDefault();
 		getData();
 		toTop();
-		e.target.reset()
+		e.target.reset();
 	};
 	return (
 		<div className="App">
@@ -48,15 +47,15 @@ const App = () => {
 						onChange={change}
 					/>
 				</form>
-				{results ? <span className="results">Results for: {results}</span> : null}
+				{results ? (
+					<span className="results">Results for: {results}</span>
+				) : null}
 			</Headroom>
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<h2>Search for a show</h2>
-			</header>
 			<div className="container">
 				{shows.length === 0 ? (
-					<p>Waiting...</p>
+					<div className="loader">
+						<h2 className="loader">Waiting For Your Search...</h2>
+					</div>
 				) : (
 					shows.map(i => {
 						const strip = html => {
