@@ -14,6 +14,7 @@
   background:#333;
   color:white;
   text-align: center;
+  margin-bottom:8px;
 }
 
 .summary{
@@ -21,6 +22,14 @@
   text-align: center;
   font-size:1em;
   font-weight: 500;
+}
+
+.results{
+  background:#333;
+  color:#f57f17;
+  border-radius:1em;
+  padding:5px;
+  font-size:1.2em;
 }
 
 @keyframes App-logo-spin {
