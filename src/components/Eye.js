@@ -1,12 +1,12 @@
 import React from 'react';
-import '../Eye.css';
+import './Eye.css';
 
 const Eye = () => {
 	return (
-		<div class="eyelid">
-			<div class="sclera">
-				<div class="iris">
-					<div class="pupil">&nbsp;</div>
+		<div className="eyelid">
+			<div className="sclera">
+				<div className="iris">
+					<div className="pupil">&nbsp;</div>
 				</div>
 			</div>
 		</div>

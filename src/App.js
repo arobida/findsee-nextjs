@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Headroom from 'react-headroom';
-import Eye from './components/Eye'
+import Home from './routes/Home';
+import Show from './routes/Show';
+import Eye from './components/Eye';
 
-const App = () => {
+const App = (props) => {
 	const [val, setVal] = useState('');
-	const [shows, setShows] = useState([]);
+	const [show, setShow] = useState([]);
 	const [results, setResults] = useState(null);
-
+console.log("test")
 	const getData = async () => {
 		const res = await fetch(`https://api.tvmaze.com/search/shows?q=${val}`);
 		const data = await res.json();
 		//console.log(data);
-		setShows(data);
-		console.log(shows);
+		setShow(data);
+		console.log(show);
 		return data;
 	};
 
@@ -36,81 +39,39 @@ const App = () => {
 		getData();
 		toTop();
 		e.target.reset();
+
 	};
 	return (
-		<div className="App">
-			<a href="/">
-				{/* <img src={eye} alt="eyeball" className="eye blink" /> */}
-				<Eye/>
-			</a>
-			<Headroom>
-				<form onSubmit={submit}>
-					<input
-						className="search"
-						type="text"
-						placeholder="🔎 Shows Search 🔍"
-						onChange={change}
+			<div className="App">
+				<a href="/">
+					{/* <img src={eye} alt="eyeball" className="eye blink" /> */}
+					<Eye />
+				</a>
+				<Headroom style={{zIndex:'40'}}>
+					<form onSubmit={submit}>
+						<input
+							className="search"
+							type="text"
+							placeholder="🔎 Shows Search 🔍"
+							onChange={change}
+						/>
+					</form>
+					{results ? (
+						<span className="results">Results for: {results}</span>
+					) : null}
+				</Headroom>
+				<div className="routes">
+					<Route
+						exact
+						path="/"
+						render={props => <Home {...props} shows={show} />}
 					/>
-				</form>
-				{results ? (
-					<span className="results">Results for: {results}</span>
-				) : null}
-			</Headroom>
-			<div className="container">
-				{shows.length === 0 ? (
-					<div className="loader">
-						<h2 className="loader">Waiting For Your Search...</h2>
-					</div>
-				) : (
-					shows.map(i => {
-						const strip = html => {
-							var temporalDivElement = document.createElement('div');
-							temporalDivElement.innerHTML = html;
-							return (
-								temporalDivElement.textContent ||
-								temporalDivElement.innerText ||
-								''
-							);
-						};
-						const item = {
-							key: i.show.id,
-							title: i.show.name,
-							rating: i.show.rating.average,
-							net: i.show.network ? '@' + i.show.network.name : null,
-							netSite: i.show.officialSite ? i.show.officialSite : null,
-							altText: i.show.name.toString(),
-							imgSrc: i.show.image
-								? i.show.image.medium
-								: 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png',
-							sum: strip(i.show.summary)
-						};
-						return (
-							<div className="show" key={item.key}>
-								<h1 className="title">{item.title}</h1>
-								<h3 className="rating">Rating: {item.rating}</h3>
-								<img className="pic" alt={item.altText} src={item.imgSrc} />
-								<h3>
-									<span>
-										{item.netSite ? (
-											<a
-												href={item.netSite}
-												target="_blank"
-												rel="noopener noreferrer"
-												style={{ marginRight: '.5em' }}
-											>
-												Watch Now
-											</a>
-										) : null}
-										<span>{item.net}</span>
-									</span>
-								</h3>
-								<p className="summary">{item.sum}</p>
-							</div>
-						);
-					})
-				)}
+						<Route
+						path="/show/:id"
+						render={props => <Show {...props} showId={show} />}
+					/>
+				</div>
 			</div>
-		</div>
 	);
 };
 
