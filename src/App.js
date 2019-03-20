@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Headroom from 'react-headroom';
 
 const App = () => {
 	const [val, setVal] = useState('');
@@ -30,18 +31,20 @@ const App = () => {
 	};
 	return (
 		<div className="App">
+			<Headroom>
+				<form onSubmit={submit}>
+					<input
+						className="search"
+						type="text"
+						placeholder="🔎 Show Search 🔍"
+						onChange={change}
+					/>
+				</form>
+			</Headroom>
 			<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
 				<h2>Search for a show</h2>
 			</header>
-			<form onSubmit={submit}>
-				<input
-					className="search"
-					type="text"
-					placeholder="Type the name of show"
-					onChange={change}
-				/>
-			</form>
 			<div className="container">
 				{shows.length === 0 ? (
 					<p>Waiting...</p>
@@ -73,7 +76,7 @@ const App = () => {
 								<h1 className="title">{item.title}</h1>
 								<h3 className="rating">Rating: {item.rating}</h3>
 								<img className="pic" alt={item.altText} src={item.imgSrc} />
-								<p>
+								<h3>
 									<a
 										href={item.netSite}
 										target="_blank"
@@ -81,8 +84,8 @@ const App = () => {
 									>
 										{item.net}
 									</a>
-								</p>
-								<p>{item.sum}</p>
+								</h3>
+								<p className="summary">{item.sum}</p>
 							</div>
 						);
 					})
