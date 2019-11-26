@@ -5,7 +5,7 @@ const Show = ({ showId, location, match, history }) => {
 
 console.log("show")
 	const getData = async () => {
-		const res = await fetch(`http://api.tvmaze.com/shows/${match.params.id}`);
+		const res = await fetch(`https://api.tvmaze.com/shows/${match.params.id}`);
 		const data = await res.json();
 		await console.log(data);
 		setShow(data);

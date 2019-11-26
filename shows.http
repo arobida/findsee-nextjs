@@ -1,0 +1,2 @@
+### returns shows based on a query
+GET https://api.tvmaze.com/search/shows?q=hey
