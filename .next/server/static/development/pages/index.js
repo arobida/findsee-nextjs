@@ -1906,7 +1906,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _src_context_ShowContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/context/ShowContext */ "./src/context/ShowContext.js");
 /* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/components/Layout */ "./src/components/Layout.js");
-/* harmony import */ var _src_routes_Show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/routes/Show */ "./src/routes/Show.js");
 var _jsxFileName = "/Users/andrew/Projects/findsee/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -1914,33 +1913,28 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
-const Index = ({
-  location,
-  match,
-  history
-}) => {
+const Index = () => {
   const {
     shows
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_src_context_ShowContext__WEBPACK_IMPORTED_MODULE_2__["ShowContext"]);
   return __jsx(_src_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 9
     },
     __self: undefined
   }, shows.length === 0 ? __jsx("div", {
     className: "loader",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 11
     },
     __self: undefined
   }, __jsx("h2", {
     className: "loader",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 12
     },
     __self: undefined
   }, "Waiting For Your Search...")) : shows.map(i => {
@@ -1965,27 +1959,27 @@ const Index = ({
       key: item.key,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 38
       },
       __self: undefined
     }, __jsx("h1", {
       className: "title",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 39
       },
       __self: undefined
     }, item.title), __jsx("h3", {
       className: "rating",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 40
       },
       __self: undefined
     }, "Rating: ", item.rating), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 41
       },
       __self: undefined
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -1993,21 +1987,21 @@ const Index = ({
       as: `/${item.key}`,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 42
       },
       __self: undefined
     }, __jsx("a", {
       className: "showLink",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 43
       },
       __self: undefined
     }, __jsx("button", {
       className: "view shadow",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 44
       },
       __self: undefined
     }, "View"))), __jsx("img", {
@@ -2016,19 +2010,19 @@ const Index = ({
       src: item.imgSrc,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 47
       },
       __self: undefined
     })), __jsx("h3", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 49
       },
       __self: undefined
     }, __jsx("span", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 50
       },
       __self: undefined
     }, item.netSite ? __jsx("a", {
@@ -2040,20 +2034,20 @@ const Index = ({
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 52
       },
       __self: undefined
     }, "Watch Now") : null, __jsx("span", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 61
       },
       __self: undefined
     }, item.net))), __jsx("p", {
       className: "summary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 64
       },
       __self: undefined
     }, item.sum));
@@ -2364,73 +2358,6 @@ const ShowProvider = ({
     __self: undefined
   }, children);
 };
-
-/***/ }),
-
-/***/ "./src/routes/Show.js":
-/*!****************************!*\
-  !*** ./src/routes/Show.js ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/andrew/Projects/findsee/src/routes/Show.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-const Show = ({
-  showId,
-  location,
-  match,
-  history
-}) => {
-  const {
-    0: show,
-    1: setShow
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
-  console.log("show");
-
-  const getData = async () => {
-    const res = await fetch(`https://api.tvmaze.com/shows/${match.params.id}`);
-    const data = await res.json();
-    await console.log(data);
-    setShow(data);
-  };
-
-  return __jsx("div", {
-    className: "container",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }, __jsx("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: undefined
-  }, __jsx("h1", {
-    className: "showTitle",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18
-    },
-    __self: undefined
-  }, "hey")));
-};
-
-const strip = html => {
-  var temporalDivElement = document.createElement('div');
-  temporalDivElement.innerHTML = html;
-  return temporalDivElement.textContent || temporalDivElement.innerText || '';
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Show);
 
 /***/ }),
 

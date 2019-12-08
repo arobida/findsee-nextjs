@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import { ShowContext } from '../src/context/ShowContext';
 import Layout from '../src/components/Layout';
-import Show from '../src/routes/Show';
 
-const Index = ({ location, match, history }) => {
+const Index = () => {
 	const { shows } = useContext(ShowContext);
 	return (
 		<Layout>
