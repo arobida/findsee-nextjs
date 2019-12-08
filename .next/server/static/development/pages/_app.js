@@ -748,7 +748,6 @@ const ShowContext = Object(react__WEBPACK_IMPORTED_MODULE_7__["createContext"])(
 const ShowProvider = ({
   children
 }) => {
-  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_8__["useRouter"])();
   const {
     0: shows,
     1: setShows
@@ -771,12 +770,15 @@ const ShowProvider = ({
     return data;
   };
 
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(() => {}, [query]);
+
   const getQuery = val => {
     setQuery(val);
   };
 
   const getId = id => {
     setId(id);
+    return showId;
   };
 
   return __jsx(ShowContext.Provider, {
@@ -790,7 +792,7 @@ const ShowProvider = ({
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: undefined
   }, children);

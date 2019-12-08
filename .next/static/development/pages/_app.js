@@ -13084,7 +13084,6 @@ var defaultValues = {
 var ShowContext = Object(react__WEBPACK_IMPORTED_MODULE_9__["createContext"])(defaultValues);
 var ShowProvider = function ShowProvider(_ref) {
   var children = _ref.children;
-  var router = Object(next_router__WEBPACK_IMPORTED_MODULE_10__["useRouter"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])([]),
       shows = _useState[0],
@@ -13137,12 +13136,15 @@ var ShowProvider = function ShowProvider(_ref) {
     };
   }();
 
+  Object(react__WEBPACK_IMPORTED_MODULE_9__["useEffect"])(function () {}, [query]);
+
   var getQuery = function getQuery(val) {
     setQuery(val);
   };
 
   var getId = function getId(id) {
     setId(id);
+    return showId;
   };
 
   return __jsx(ShowContext.Provider, {
@@ -13156,7 +13158,7 @@ var ShowProvider = function ShowProvider(_ref) {
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: this
   }, children);

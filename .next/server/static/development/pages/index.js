@@ -1947,7 +1947,7 @@ const Index = () => {
     const item = {
       key: i.show.id,
       title: i.show.name,
-      rating: i.show.rating.average,
+      rating: i.show.rating.average ? i.show.rating.average : 'No Rating Yet...',
       net: i.show.network ? '@' + i.show.network.name : null,
       netSite: i.show.officialSite ? i.show.officialSite : null,
       altText: i.show.name.toString(),
@@ -1959,27 +1959,27 @@ const Index = () => {
       key: item.key,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 40
       },
       __self: undefined
     }, __jsx("h1", {
       className: "title",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 41
       },
       __self: undefined
     }, item.title), __jsx("h3", {
       className: "rating",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 42
       },
       __self: undefined
     }, "Rating: ", item.rating), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 43
       },
       __self: undefined
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -1987,21 +1987,21 @@ const Index = () => {
       as: `/${item.key}`,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 44
       },
       __self: undefined
     }, __jsx("a", {
       className: "showLink",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 45
       },
       __self: undefined
     }, __jsx("button", {
       className: "view shadow",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 46
       },
       __self: undefined
     }, "View"))), __jsx("img", {
@@ -2010,19 +2010,19 @@ const Index = () => {
       src: item.imgSrc,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 49
       },
       __self: undefined
     })), __jsx("h3", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 51
       },
       __self: undefined
     }, __jsx("span", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 52
       },
       __self: undefined
     }, item.netSite ? __jsx("a", {
@@ -2034,20 +2034,20 @@ const Index = () => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 54
       },
       __self: undefined
     }, "Watch Now") : null, __jsx("span", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 63
       },
       __self: undefined
     }, item.net))), __jsx("p", {
       className: "summary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 66
       },
       __self: undefined
     }, item.sum));
@@ -2128,12 +2128,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-headroom */ "react-headroom");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-headroom */ "react-headroom");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
 
 var _jsxFileName = "/Users/andrew/Projects/findsee/src/components/Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -2143,8 +2145,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
 const Layout = ({
-  history,
   children
 }) => {
   const {
@@ -2152,12 +2154,8 @@ const Layout = ({
     getShows,
     query,
     getQuery
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_3__["ShowContext"]);
-  const {
-    0: val,
-    1: setVal
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])('');
-  console.log(shows);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_4__["ShowContext"]);
+  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
   const {
     0: results,
     1: setResults
@@ -2180,7 +2178,8 @@ const Layout = ({
   };
 
   const submit = e => {
-    e.preventDefault(); // const checkPath = () =>
+    e.preventDefault();
+    router.replace('/'); // const checkPath = () =>
     // 	location.pathname === '/' ? null : history.goBack();
 
     getShows();
@@ -2191,7 +2190,7 @@ const Layout = ({
   return __jsx(StyledLayout, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 38
     },
     __self: undefined
   }, __jsx("a", {
@@ -2199,29 +2198,29 @@ const Layout = ({
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 39
     },
     __self: undefined
-  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 41
     },
     __self: undefined
-  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_5___default.a, {
     style: {
       zIndex: '40'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 43
     },
     __self: undefined
   }, __jsx("form", {
     onSubmit: submit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 44
     },
     __self: undefined
   }, __jsx("input", {
@@ -2231,27 +2230,27 @@ const Layout = ({
     onChange: change,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 45
     },
     __self: undefined
   })), results ? __jsx("span", {
     className: "results",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: undefined
   }, "Results for: ", results) : null), __jsx("main", {
     className: "routes",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: undefined
   }, children));
 };
 
-const StyledLayout = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+const StyledLayout = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "Layout__StyledLayout",
   componentId: "sc-1faptvp-0"
 })(["text-align:center;.loader{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background:#333;}.loader h2{animation:animate 15s linear infinite;background-image:url('https://i.postimg.cc/3JfYgrnj/water-2.png');background-repeat:repeat-x;color:rgba(255,255,255,0.1);font-size:3em;margin:0;padding:0;text-transform:uppercase;-webkit-background-clip:text;-moz-background-clip:text;background-clip:text;}@keyframes animate{0%{background-position:left 0px top 150px;}40%{background-position:left 600px top -30px;}80%{background-position:left 1400px top -30px;}100%{background-position:left 2000px top 150px;}}.eye{position:fixed;width:3em;top:18px;left:5px;z-index:5;}.search{width:60vw;font-size:1.3em;height:2em;background:#333;color:white;text-align:center;margin-top:1em;margin-bottom:1em;}.search::placeholder{color:#f57f17;}.summary{padding:0 1em 0 1em;text-align:center;font-size:1em;font-weight:500;}.results{background:#333;color:#f57f17;border-radius:1em;padding:8px;font-size:1.2em;}@keyframes App-logo-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}.showLink{z-index:2;position:absolute;margin-top:265px;margin-left:150px;color:white;}.view{border-radius:0.9em;background:#0091ea;color:white;padding:0.5em;font-size:1em;}.shadow{-webkit-box-shadow:3px 3px 5px 6px #333;-moz-box-shadow:3px 3px 5px 6px #333;box-shadow:3px 3px 5px 2px #333;}"]);
@@ -2311,7 +2310,6 @@ const ShowContext = Object(react__WEBPACK_IMPORTED_MODULE_7__["createContext"])(
 const ShowProvider = ({
   children
 }) => {
-  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_8__["useRouter"])();
   const {
     0: shows,
     1: setShows
@@ -2334,12 +2332,15 @@ const ShowProvider = ({
     return data;
   };
 
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(() => {}, [query]);
+
   const getQuery = val => {
     setQuery(val);
   };
 
   const getId = id => {
     setId(id);
+    return showId;
   };
 
   return __jsx(ShowContext.Provider, {
@@ -2353,7 +2354,7 @@ const ShowProvider = ({
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: undefined
   }, children);

@@ -2,21 +2,23 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ShowContext } from '../src/context/ShowContext';
 import Layout from '../src/components/Layout';
-import { existsTypeAnnotation } from '@babel/types';
 
 const Show = () => {
 	const router = useRouter();
 	const { showId, getId } = useContext(ShowContext);
 	const [show, setShow] = useState({});
 
-	getId(router.query.show);
-	console.log(getId);
+
+	console.log(getId(router.query.show));
+
+	const getShow = async () => {
+		const id = await getId(router.query.show);
+		const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+		const data = await res.json();
+		setShow(data);
+		return show
+	};
 	useEffect(() => {
-		const getShow = async () => {
-			const res = await fetch(`https://api.tvmaze.com/shows/${showId}`);
-			const data = await res.json();
-			setShow(data);
-		};
 		getShow();
 	}, [showId]);
 	const isImage = show.image
@@ -26,7 +28,7 @@ const Show = () => {
 	const exists = (con, val) => con && val;
 	return (
 		<Layout>
-		<button onClick={()=>router.back()}>Go Back</button>
+			<button onClick={() => router.back()}>Go Back</button>
 			<h1>{show.name}</h1>
 			<img src={isImage} alt={show.name} />
 			<h4>

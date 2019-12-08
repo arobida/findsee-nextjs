@@ -204,11 +204,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _src_context_ShowContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/context/ShowContext */ "./src/context/ShowContext.js");
 /* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/components/Layout */ "./src/components/Layout.js");
-/* harmony import */ var _babel_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/types */ "@babel/types");
-/* harmony import */ var _babel_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_types__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/Users/andrew/Projects/findsee/pages/[show].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
 
 
 
@@ -224,15 +221,17 @@ const Show = () => {
     0: show,
     1: setShow
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
-  getId(router.query.show);
-  console.log(getId);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    const getShow = async () => {
-      const res = await fetch(`https://api.tvmaze.com/shows/${showId}`);
-      const data = await res.json();
-      setShow(data);
-    };
+  console.log(getId(router.query.show));
 
+  const getShow = async () => {
+    const id = await getId(router.query.show);
+    const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+    const data = await res.json();
+    setShow(data);
+    return show;
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     getShow();
   }, [showId]);
   const isImage = show.image ? show.image.medium : 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';
@@ -243,20 +242,20 @@ const Show = () => {
   return __jsx(_src_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 30
     },
     __self: undefined
   }, __jsx("button", {
     onClick: () => router.back(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 31
     },
     __self: undefined
   }, "Go Back"), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 32
     },
     __self: undefined
   }, show.name), __jsx("img", {
@@ -264,13 +263,13 @@ const Show = () => {
     alt: show.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 33
     },
     __self: undefined
   }), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 34
     },
     __self: undefined
   }, __jsx("a", {
@@ -279,103 +278,103 @@ const Show = () => {
     rel: "noopener noreferrer",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 35
     },
     __self: undefined
   }, show.officialSite ? 'Watch' : '')), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 43
     },
     __self: undefined
   }, "Air Date: ", show.premiered), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 44
     },
     __self: undefined
   }, "Status: ", show.status), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 45
     },
     __self: undefined
   }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 46
     },
     __self: undefined
   }, "Schedule ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 47
     },
     __self: undefined
   })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 49
     },
     __self: undefined
   }, "Time - ", isTime), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 50
     },
     __self: undefined
   }, "Days -", ' ', show.schedule && show.schedule.days.map(day => show.schedule.days.length - 1 === show.schedule.days.indexOf(day) ? day + '' : day + ', ')), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 59
     },
     __self: undefined
   })), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 61
     },
     __self: undefined
   }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 62
     },
     __self: undefined
   }, "Network ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 63
     },
     __self: undefined
   })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 65
     },
     __self: undefined
   }, "Company: ", show.network && show.network.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 66
     },
     __self: undefined
   }, "Code: ", show.network && show.network.country.code), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 67
     },
     __self: undefined
   }, "Country: ", show.network && show.network.country.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 68
     },
     __self: undefined
   }, "Timezone: ", show.network && show.network.country.timezone), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 69
     },
     __self: undefined
   })));
@@ -455,12 +454,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-headroom */ "react-headroom");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-headroom */ "react-headroom");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
 
 var _jsxFileName = "/Users/andrew/Projects/findsee/src/components/Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -470,8 +471,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
 const Layout = ({
-  history,
   children
 }) => {
   const {
@@ -479,12 +480,8 @@ const Layout = ({
     getShows,
     query,
     getQuery
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_3__["ShowContext"]);
-  const {
-    0: val,
-    1: setVal
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])('');
-  console.log(shows);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_4__["ShowContext"]);
+  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
   const {
     0: results,
     1: setResults
@@ -507,7 +504,8 @@ const Layout = ({
   };
 
   const submit = e => {
-    e.preventDefault(); // const checkPath = () =>
+    e.preventDefault();
+    router.replace('/'); // const checkPath = () =>
     // 	location.pathname === '/' ? null : history.goBack();
 
     getShows();
@@ -518,7 +516,7 @@ const Layout = ({
   return __jsx(StyledLayout, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 38
     },
     __self: undefined
   }, __jsx("a", {
@@ -526,29 +524,29 @@ const Layout = ({
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 39
     },
     __self: undefined
-  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 41
     },
     __self: undefined
-  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_5___default.a, {
     style: {
       zIndex: '40'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 43
     },
     __self: undefined
   }, __jsx("form", {
     onSubmit: submit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 44
     },
     __self: undefined
   }, __jsx("input", {
@@ -558,27 +556,27 @@ const Layout = ({
     onChange: change,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 45
     },
     __self: undefined
   })), results ? __jsx("span", {
     className: "results",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: undefined
   }, "Results for: ", results) : null), __jsx("main", {
     className: "routes",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: undefined
   }, children));
 };
 
-const StyledLayout = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+const StyledLayout = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "Layout__StyledLayout",
   componentId: "sc-1faptvp-0"
 })(["text-align:center;.loader{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background:#333;}.loader h2{animation:animate 15s linear infinite;background-image:url('https://i.postimg.cc/3JfYgrnj/water-2.png');background-repeat:repeat-x;color:rgba(255,255,255,0.1);font-size:3em;margin:0;padding:0;text-transform:uppercase;-webkit-background-clip:text;-moz-background-clip:text;background-clip:text;}@keyframes animate{0%{background-position:left 0px top 150px;}40%{background-position:left 600px top -30px;}80%{background-position:left 1400px top -30px;}100%{background-position:left 2000px top 150px;}}.eye{position:fixed;width:3em;top:18px;left:5px;z-index:5;}.search{width:60vw;font-size:1.3em;height:2em;background:#333;color:white;text-align:center;margin-top:1em;margin-bottom:1em;}.search::placeholder{color:#f57f17;}.summary{padding:0 1em 0 1em;text-align:center;font-size:1em;font-weight:500;}.results{background:#333;color:#f57f17;border-radius:1em;padding:8px;font-size:1.2em;}@keyframes App-logo-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}.showLink{z-index:2;position:absolute;margin-top:265px;margin-left:150px;color:white;}.view{border-radius:0.9em;background:#0091ea;color:white;padding:0.5em;font-size:1em;}.shadow{-webkit-box-shadow:3px 3px 5px 6px #333;-moz-box-shadow:3px 3px 5px 6px #333;box-shadow:3px 3px 5px 2px #333;}"]);
@@ -638,7 +636,6 @@ const ShowContext = Object(react__WEBPACK_IMPORTED_MODULE_7__["createContext"])(
 const ShowProvider = ({
   children
 }) => {
-  const router = Object(next_router__WEBPACK_IMPORTED_MODULE_8__["useRouter"])();
   const {
     0: shows,
     1: setShows
@@ -661,12 +658,15 @@ const ShowProvider = ({
     return data;
   };
 
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(() => {}, [query]);
+
   const getQuery = val => {
     setQuery(val);
   };
 
   const getId = id => {
     setId(id);
+    return showId;
   };
 
   return __jsx(ShowContext.Provider, {
@@ -680,7 +680,7 @@ const ShowProvider = ({
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: undefined
   }, children);
@@ -697,17 +697,6 @@ const ShowProvider = ({
 
 module.exports = __webpack_require__(/*! /Users/andrew/Projects/findsee/pages/[show].js */"./pages/[show].js");
 
-
-/***/ }),
-
-/***/ "@babel/types":
-/*!*******************************!*\
-  !*** external "@babel/types" ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@babel/types");
 
 /***/ }),
 

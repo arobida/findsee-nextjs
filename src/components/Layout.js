@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { ShowContext } from '../context/ShowContext';
 import Headroom from 'react-headroom';
 import Eye from './Eye';
 
-const Layout = ({ history, children }) => {
+const Layout = ({ children }) => {
 	const { shows, getShows, query, getQuery } = useContext(ShowContext);
-	const [val, setVal] = useState('');
-	console.log(shows);
+	const router = useRouter();
 	const [results, setResults] = useState(null);
 
 	const change = e => {
@@ -27,6 +27,7 @@ const Layout = ({ history, children }) => {
 	};
 	const submit = e => {
 		e.preventDefault();
+		router.replace('/');
 		// const checkPath = () =>
 		// 	location.pathname === '/' ? null : history.goBack();
 		getShows();

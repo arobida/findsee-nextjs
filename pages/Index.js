@@ -25,7 +25,9 @@ const Index = () => {
 					const item = {
 						key: i.show.id,
 						title: i.show.name,
-						rating: i.show.rating.average,
+						rating: i.show.rating.average
+							? i.show.rating.average
+							: 'No Rating Yet...',
 						net: i.show.network ? '@' + i.show.network.name : null,
 						netSite: i.show.officialSite ? i.show.officialSite : null,
 						altText: i.show.name.toString(),

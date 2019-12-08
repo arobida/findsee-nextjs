@@ -8,7 +8,6 @@ const defaultValues = {
 
 export const ShowContext = createContext(defaultValues);
 export const ShowProvider = ({ children }) => {
-	const router = useRouter();
 	const [shows, setShows] = useState([]);
 	const [query, setQuery] = useState('');
 	const [showId, setId] = useState('');
@@ -21,6 +20,7 @@ export const ShowProvider = ({ children }) => {
 		console.log(shows);
 		return data;
 	};
+	useEffect(() => {}, [query]);
 
 	const getQuery = val => {
 		setQuery(val);
@@ -28,6 +28,7 @@ export const ShowProvider = ({ children }) => {
 
 	const getId = id => {
 		setId(id);
+		return showId;
 	};
 
 	return (
