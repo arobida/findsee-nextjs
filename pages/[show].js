@@ -19,12 +19,11 @@ const Show = () => {
 	};
 	useEffect(() => {
 		getShow();
-	}, [showId]);
+	}, []);
 	const isImage = show.image
 		? show.image.medium
 		: 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';
 	const isTime = show.schedule ? show.schedule.time : 'N/A';
-	const exists = (con, val) => con && val;
 	return (
 		<Layout>
 			<button onClick={() => router.back()}>Go Back</button>
