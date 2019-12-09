@@ -1,6 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, {
+	useContext,
+	useState,
+	useEffect,
+	useLayoutEffect,
+	useCallback,
+	useRef
+} from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import useEventListener from '../hooks/useEventListener';
 import { ShowContext } from '../context/ShowContext';
 import Headroom from 'react-headroom';
 import Eye from './Eye';
@@ -8,7 +16,14 @@ import Eye from './Eye';
 const Layout = ({ children }) => {
 	const { shows, getShows, query, getQuery } = useContext(ShowContext);
 	const router = useRouter();
+	const searchRef = useRef();
 	const [results, setResults] = useState(null);
+
+	const handler = e =>
+		e.key === 'K' && e.shiftKey === true ? searchRef.current.focus() : null;
+
+		useEventListener('keyup', handler)
+
 
 	const change = e => {
 		const params = [e.target.value];
@@ -46,6 +61,7 @@ const Layout = ({ children }) => {
 						className="search"
 						type="text"
 						placeholder="🔎 Shows Search 🔍"
+						ref={searchRef}
 						onChange={change}
 					/>
 				</form>

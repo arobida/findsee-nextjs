@@ -8,7 +8,6 @@ const Show = () => {
 	const { showId, getId } = useContext(ShowContext);
 	const [show, setShow] = useState({});
 
-
 	console.log(getId(router.query.show));
 
 	const getShow = async () => {
@@ -16,7 +15,7 @@ const Show = () => {
 		const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
 		const data = await res.json();
 		setShow(data);
-		return show
+		return show;
 	};
 	useEffect(() => {
 		getShow();

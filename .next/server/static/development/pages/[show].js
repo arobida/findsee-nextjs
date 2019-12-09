@@ -242,20 +242,20 @@ const Show = () => {
   return __jsx(_src_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 29
     },
     __self: undefined
   }, __jsx("button", {
     onClick: () => router.back(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 30
     },
     __self: undefined
   }, "Go Back"), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 31
     },
     __self: undefined
   }, show.name), __jsx("img", {
@@ -263,13 +263,13 @@ const Show = () => {
     alt: show.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 32
     },
     __self: undefined
   }), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 33
     },
     __self: undefined
   }, __jsx("a", {
@@ -278,103 +278,103 @@ const Show = () => {
     rel: "noopener noreferrer",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 34
     },
     __self: undefined
   }, show.officialSite ? 'Watch' : '')), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 42
     },
     __self: undefined
   }, "Air Date: ", show.premiered), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 43
     },
     __self: undefined
   }, "Status: ", show.status), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 44
     },
     __self: undefined
   }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 45
     },
     __self: undefined
   }, "Schedule ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 46
     },
     __self: undefined
   })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 48
     },
     __self: undefined
   }, "Time - ", isTime), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 49
     },
     __self: undefined
   }, "Days -", ' ', show.schedule && show.schedule.days.map(day => show.schedule.days.length - 1 === show.schedule.days.indexOf(day) ? day + '' : day + ', ')), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 58
     },
     __self: undefined
   })), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 60
     },
     __self: undefined
   }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 61
     },
     __self: undefined
   }, "Network ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 62
     },
     __self: undefined
   })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 64
     },
     __self: undefined
   }, "Company: ", show.network && show.network.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 65
     },
     __self: undefined
   }, "Code: ", show.network && show.network.country.code), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 66
     },
     __self: undefined
   }, "Country: ", show.network && show.network.country.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 67
     },
     __self: undefined
   }, "Timezone: ", show.network && show.network.country.timezone), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 68
     },
     __self: undefined
   })));
@@ -458,13 +458,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-headroom */ "react-headroom");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
+/* harmony import */ var _hooks_useEventListener__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useEventListener */ "./src/hooks/useEventListener.js");
+/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-headroom */ "react-headroom");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
 
 var _jsxFileName = "/Users/andrew/Projects/findsee/src/components/Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -480,12 +482,17 @@ const Layout = ({
     getShows,
     query,
     getQuery
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_4__["ShowContext"]);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_5__["ShowContext"]);
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
+  const searchRef = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
   const {
     0: results,
     1: setResults
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null);
+
+  const handler = e => e.key === 'K' && e.shiftKey === true ? searchRef.current.focus() : null;
+
+  Object(_hooks_useEventListener__WEBPACK_IMPORTED_MODULE_4__["default"])('keyup', handler);
 
   const change = e => {
     const params = [e.target.value];
@@ -516,7 +523,7 @@ const Layout = ({
   return __jsx(StyledLayout, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 53
     },
     __self: undefined
   }, __jsx("a", {
@@ -524,53 +531,54 @@ const Layout = ({
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 54
     },
     __self: undefined
-  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 56
     },
     __self: undefined
-  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_5___default.a, {
+  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_6___default.a, {
     style: {
       zIndex: '40'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 58
     },
     __self: undefined
   }, __jsx("form", {
     onSubmit: submit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 59
     },
     __self: undefined
   }, __jsx("input", {
     className: "search",
     type: "text",
     placeholder: "\uD83D\uDD0E Shows Search \uD83D\uDD0D",
+    ref: searchRef,
     onChange: change,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 60
     },
     __self: undefined
   })), results ? __jsx("span", {
     className: "results",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 69
     },
     __self: undefined
   }, "Results for: ", results) : null), __jsx("main", {
     className: "routes",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 72
     },
     __self: undefined
   }, children));
@@ -685,6 +693,52 @@ const ShowProvider = ({
     __self: undefined
   }, children);
 };
+
+/***/ }),
+
+/***/ "./src/hooks/useEventListener.js":
+/*!***************************************!*\
+  !*** ./src/hooks/useEventListener.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const win = false ? undefined : null;
+
+function useEventListener(eventName, handler, element = win) {
+  // Create a ref that stores handler
+  const savedHandler = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(); // Update ref.current value if handler changes.
+  // This allows our effect below to always get latest handler ...
+  // ... without us needing to pass it in effect deps array ...
+  // ... and potentially cause effect to re-run every render.
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    savedHandler.current = handler;
+  }, [handler]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    // Make sure element supports addEventListener
+    // On
+    const isSupported = element && element.addEventListener;
+    if (!isSupported) return; // Create event listener that calls handler function stored in ref
+
+    const eventListener = event => savedHandler.current(event); // Add event listener
+
+
+    element.addEventListener(eventName, eventListener); // Remove event listener on cleanup
+
+    return () => {
+      element.removeEventListener(eventName, eventListener);
+    };
+  }, [eventName, element] // Re-run if eventName or element changes
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (useEventListener);
 
 /***/ }),
 

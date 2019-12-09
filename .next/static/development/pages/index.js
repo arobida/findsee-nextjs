@@ -14246,10 +14246,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-headroom */ "./node_modules/react-headroom/dist/index.js");
-/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
+/* harmony import */ var _hooks_useEventListener__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useEventListener */ "./src/hooks/useEventListener.js");
+/* harmony import */ var _context_ShowContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../context/ShowContext */ "./src/context/ShowContext.js");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-headroom */ "./node_modules/react-headroom/dist/index.js");
+/* harmony import */ var react_headroom__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_headroom__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Eye__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Eye */ "./src/components/Eye.js");
 
 var _jsxFileName = "/Users/andrew/Projects/findsee/src/components/Layout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -14260,20 +14261,28 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
 var Layout = function Layout(_ref) {
   var children = _ref.children;
 
-  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_4__["ShowContext"]),
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_ShowContext__WEBPACK_IMPORTED_MODULE_5__["ShowContext"]),
       shows = _useContext.shows,
       getShows = _useContext.getShows,
       query = _useContext.query,
       getQuery = _useContext.getQuery;
 
   var router = Object(next_router__WEBPACK_IMPORTED_MODULE_2__["useRouter"])();
+  var searchRef = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       results = _useState[0],
       setResults = _useState[1];
+
+  var handler = function handler(e) {
+    return e.key === 'K' && e.shiftKey === true ? searchRef.current.focus() : null;
+  };
+
+  Object(_hooks_useEventListener__WEBPACK_IMPORTED_MODULE_4__["default"])('keyup', handler);
 
   var change = function change(e) {
     var params = [e.target.value];
@@ -14306,7 +14315,7 @@ var Layout = function Layout(_ref) {
   return __jsx(StyledLayout, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 53
     },
     __self: this
   }, __jsx("a", {
@@ -14314,53 +14323,54 @@ var Layout = function Layout(_ref) {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 54
     },
     __self: this
-  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, __jsx(_Eye__WEBPACK_IMPORTED_MODULE_7__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 56
     },
     __self: this
-  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_5___default.a, {
+  })), __jsx(react_headroom__WEBPACK_IMPORTED_MODULE_6___default.a, {
     style: {
       zIndex: '40'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 58
     },
     __self: this
   }, __jsx("form", {
     onSubmit: submit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 59
     },
     __self: this
   }, __jsx("input", {
     className: "search",
     type: "text",
     placeholder: "\uD83D\uDD0E Shows Search \uD83D\uDD0D",
+    ref: searchRef,
     onChange: change,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 60
     },
     __self: this
   })), results ? __jsx("span", {
     className: "results",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 69
     },
     __self: this
   }, "Results for: ", results) : null), __jsx("main", {
     className: "routes",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 72
     },
     __self: this
   }, children));
@@ -14509,6 +14519,55 @@ var ShowProvider = function ShowProvider(_ref) {
     __self: this
   }, children);
 };
+
+/***/ }),
+
+/***/ "./src/hooks/useEventListener.js":
+/*!***************************************!*\
+  !*** ./src/hooks/useEventListener.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var win = true ? window : undefined;
+
+function useEventListener(eventName, handler) {
+  var element = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : win;
+  // Create a ref that stores handler
+  var savedHandler = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(); // Update ref.current value if handler changes.
+  // This allows our effect below to always get latest handler ...
+  // ... without us needing to pass it in effect deps array ...
+  // ... and potentially cause effect to re-run every render.
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    savedHandler.current = handler;
+  }, [handler]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Make sure element supports addEventListener
+    // On
+    var isSupported = element && element.addEventListener;
+    if (!isSupported) return; // Create event listener that calls handler function stored in ref
+
+    var eventListener = function eventListener(event) {
+      return savedHandler.current(event);
+    }; // Add event listener
+
+
+    element.addEventListener(eventName, eventListener); // Remove event listener on cleanup
+
+    return function () {
+      element.removeEventListener(eventName, eventListener);
+    };
+  }, [eventName, element] // Re-run if eventName or element changes
+  );
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (useEventListener);
 
 /***/ }),
 
