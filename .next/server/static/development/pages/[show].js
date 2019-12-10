@@ -202,10 +202,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _src_context_ShowContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/context/ShowContext */ "./src/context/ShowContext.js");
-/* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/components/Layout */ "./src/components/Layout.js");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _src_context_ShowContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/context/ShowContext */ "./src/context/ShowContext.js");
+/* harmony import */ var _src_components_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/components/Layout */ "./src/components/Layout.js");
 var _jsxFileName = "/Users/andrew/Projects/findsee/pages/[show].js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -214,14 +217,12 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const Show = () => {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])();
   const {
-    showId,
     getId
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_src_context_ShowContext__WEBPACK_IMPORTED_MODULE_2__["ShowContext"]);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_src_context_ShowContext__WEBPACK_IMPORTED_MODULE_3__["ShowContext"]);
   const {
     0: show,
     1: setShow
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
-  console.log(getId(router.query.show));
 
   const getShow = async () => {
     const id = await getId(router.query.show);
@@ -236,23 +237,37 @@ const Show = () => {
   }, []);
   const isImage = show.image ? show.image.medium : 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';
   const isTime = show.schedule ? show.schedule.time : 'N/A';
-  return __jsx(_src_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return __jsx(_src_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: undefined
+  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
     },
     __self: undefined
-  }, __jsx("button", {
-    onClick: () => router.back(),
+  }, __jsx("meta", {
+    property: "og:image",
+    content: isImage,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 29
     },
     __self: undefined
+  })), __jsx("button", {
+    onClick: () => router.back(),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
   }, "Go Back"), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 32
     },
     __self: undefined
   }, show.name), __jsx("img", {
@@ -260,13 +275,13 @@ const Show = () => {
     alt: show.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 33
     },
     __self: undefined
   }), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 34
     },
     __self: undefined
   }, __jsx("a", {
@@ -275,103 +290,103 @@ const Show = () => {
     rel: "noopener noreferrer",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 35
     },
     __self: undefined
   }, show.officialSite ? 'Watch' : '')), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 43
     },
     __self: undefined
   }, "Air Date: ", show.premiered), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 44
     },
     __self: undefined
   }, "Status: ", show.status), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 45
     },
     __self: undefined
   }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 46
     },
     __self: undefined
   }, "Schedule ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 47
     },
     __self: undefined
   })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 49
     },
     __self: undefined
   }, "Time - ", isTime), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 50
     },
     __self: undefined
   }, "Days -", ' ', show.schedule && show.schedule.days.map(day => show.schedule.days.length - 1 === show.schedule.days.indexOf(day) ? day + '' : day + ', ')), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 59
     },
     __self: undefined
   })), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 61
     },
     __self: undefined
   }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 62
     },
     __self: undefined
   }, "Network ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 63
     },
     __self: undefined
   })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 65
     },
     __self: undefined
   }, "Company: ", show.network && show.network.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 66
     },
     __self: undefined
   }, "Code: ", show.network && show.network.country.code), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 67
     },
     __self: undefined
   }, "Country: ", show.network && show.network.country.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 68
     },
     __self: undefined
   }, "Timezone: ", show.network && show.network.country.timezone), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 69
     },
     __self: undefined
   })));
@@ -814,6 +829,17 @@ module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/keys");
+
+/***/ }),
+
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 

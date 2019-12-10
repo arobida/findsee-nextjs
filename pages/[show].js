@@ -1,14 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { ShowContext } from '../src/context/ShowContext';
 import Layout from '../src/components/Layout';
 
 const Show = () => {
 	const router = useRouter();
-	const { showId, getId } = useContext(ShowContext);
+	const { getId } = useContext(ShowContext);
 	const [show, setShow] = useState({});
-
-	console.log(getId(router.query.show));
 
 	const getShow = async () => {
 		const id = await getId(router.query.show);
@@ -26,6 +25,9 @@ const Show = () => {
 	const isTime = show.schedule ? show.schedule.time : 'N/A';
 	return (
 		<Layout>
+			<Head>
+				<meta property="og:image" content={isImage} />
+			</Head>
 			<button onClick={() => router.back()}>Go Back</button>
 			<h1>{show.name}</h1>
 			<img src={isImage} alt={show.name} />
