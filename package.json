@@ -9,7 +9,8 @@
 		"react-headroom": "^3.0.0",
 		"react-router-dom": "^5.1.2",
 		"react-spring": "^8.0.27",
-		"styled-components": "^4.4.1"
+		"styled-components": "^4.4.1",
+		"swr": "^0.1.13"
 	},
 	"devDependencies": {
 		"babel-plugin-styled-components": "^1.10.6"

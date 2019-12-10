@@ -6,19 +6,22 @@ import Layout from '../src/components/Layout';
 
 const Show = () => {
 	const router = useRouter();
-	const { getId } = useContext(ShowContext);
+	const query = router.query.show
 	const [show, setShow] = useState({});
-
+	console.log('router', router);
 	const getShow = async () => {
-		const id = await getId(router.query.show);
-		const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+		const res = await fetch(`https://api.tvmaze.com/shows/${query}`);
 		const data = await res.json();
 		setShow(data);
 		return show;
 	};
 	useEffect(() => {
 		getShow();
-	}, []);
+		return () => {
+			null;
+		};
+	}, [query]);
+
 	const isImage = show.image
 		? show.image.medium
 		: 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';

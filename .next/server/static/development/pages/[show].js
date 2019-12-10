@@ -216,17 +216,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const Show = () => {
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_1__["useRouter"])();
-  const {
-    getId
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_src_context_ShowContext__WEBPACK_IMPORTED_MODULE_3__["ShowContext"]);
+  const query = router.query.show;
   const {
     0: show,
     1: setShow
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
+  console.log('router', router);
 
   const getShow = async () => {
-    const id = await getId(router.query.show);
-    const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+    const res = await fetch(`https://api.tvmaze.com/shows/${query}`);
     const data = await res.json();
     setShow(data);
     return show;
@@ -234,19 +232,22 @@ const Show = () => {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     getShow();
-  }, []);
+    return () => {
+      null;
+    };
+  }, [query]);
   const isImage = show.image ? show.image.medium : 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png';
   const isTime = show.schedule ? show.schedule.time : 'N/A';
   return __jsx(_src_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 30
     },
     __self: undefined
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 31
     },
     __self: undefined
   }, __jsx("meta", {
@@ -254,20 +255,20 @@ const Show = () => {
     content: isImage,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 32
     },
     __self: undefined
   })), __jsx("button", {
     onClick: () => router.back(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 34
     },
     __self: undefined
   }, "Go Back"), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 35
     },
     __self: undefined
   }, show.name), __jsx("img", {
@@ -275,13 +276,13 @@ const Show = () => {
     alt: show.name,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 36
     },
     __self: undefined
   }), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 37
     },
     __self: undefined
   }, __jsx("a", {
@@ -290,103 +291,103 @@ const Show = () => {
     rel: "noopener noreferrer",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 38
     },
     __self: undefined
   }, show.officialSite ? 'Watch' : '')), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 46
     },
     __self: undefined
   }, "Air Date: ", show.premiered), __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 47
     },
     __self: undefined
   }, "Status: ", show.status), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 48
     },
     __self: undefined
   }, __jsx("h4", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 46
-    },
-    __self: undefined
-  }, "Schedule ", __jsx("hr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47
-    },
-    __self: undefined
-  })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 49
     },
     __self: undefined
-  }, "Time - ", isTime), __jsx("h6", {
+  }, "Schedule ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 50
     },
     __self: undefined
+  })), __jsx("h6", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
+    },
+    __self: undefined
+  }, "Time - ", isTime), __jsx("h6", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53
+    },
+    __self: undefined
   }, "Days -", ' ', show.schedule && show.schedule.days.map(day => show.schedule.days.length - 1 === show.schedule.days.indexOf(day) ? day + '' : day + ', ')), __jsx("hr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59
-    },
-    __self: undefined
-  })), __jsx("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61
-    },
-    __self: undefined
-  }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 62
     },
     __self: undefined
-  }, "Network ", __jsx("hr", {
+  })), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 64
     },
     __self: undefined
-  })), __jsx("h6", {
+  }, __jsx("h4", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 65
     },
     __self: undefined
-  }, "Company: ", show.network && show.network.name), __jsx("h6", {
+  }, "Network ", __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 66
     },
     __self: undefined
-  }, "Code: ", show.network && show.network.country.code), __jsx("h6", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67
-    },
-    __self: undefined
-  }, "Country: ", show.network && show.network.country.name), __jsx("h6", {
+  })), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 68
     },
     __self: undefined
-  }, "Timezone: ", show.network && show.network.country.timezone), __jsx("hr", {
+  }, "Company: ", show.network && show.network.name), __jsx("h6", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69
+    },
+    __self: undefined
+  }, "Code: ", show.network && show.network.country.code), __jsx("h6", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: undefined
+  }, "Country: ", show.network && show.network.country.name), __jsx("h6", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: undefined
+  }, "Timezone: ", show.network && show.network.country.timezone), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
     },
     __self: undefined
   })));
