@@ -1,11 +1,4 @@
-import React, {
-	useContext,
-	useState,
-	useEffect,
-	useLayoutEffect,
-	useCallback,
-	useRef
-} from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import useEventListener from '../hooks/useEventListener';
@@ -14,16 +7,16 @@ import Headroom from 'react-headroom';
 import Eye from './Eye';
 
 const Layout = ({ children }) => {
-	const { shows, getShows, query, getQuery } = useContext(ShowContext);
+	const { getShows, query, getQuery, results, getResults } = useContext(
+		ShowContext
+	);
 	const router = useRouter();
 	const searchRef = useRef();
-	const [results, setResults] = useState(null);
 
 	const handler = e =>
 		e.key === 'K' && e.shiftKey === true ? searchRef.current.focus() : null;
 
-		useEventListener('keyup', handler)
-
+	useEventListener('keyup', handler);
 
 	const change = e => {
 		const params = [e.target.value];
@@ -32,7 +25,7 @@ const Layout = ({ children }) => {
 			.map(k => esc(k) + esc(params[k]))
 			.join('&');
 		getQuery(encodedQuery);
-		setResults(e.target.value);
+		getResults(params);
 		console.log(query);
 	};
 
@@ -40,15 +33,19 @@ const Layout = ({ children }) => {
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	};
+
 	const submit = e => {
+		console.log(e);
 		e.preventDefault();
 		router.replace('/');
 		// const checkPath = () =>
 		// 	location.pathname === '/' ? null : history.goBack();
 		getShows();
+		getResults();
 		toTop();
 		e.target.reset();
 	};
+
 	return (
 		<StyledLayout>
 			<a className="home" href="/">
@@ -69,6 +66,9 @@ const Layout = ({ children }) => {
 					<span className="results">Results for: {results}</span>
 				) : null}
 			</Headroom>
+			{/*
+				TODO : add route animation here with react spring
+			*/}
 			<main className="routes">{children}</main>
 		</StyledLayout>
 	);

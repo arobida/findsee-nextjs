@@ -11,19 +11,21 @@ export const ShowProvider = ({ children }) => {
 	const [shows, setShows] = useState([]);
 	const [query, setQuery] = useState('');
 	const [showId, setId] = useState('');
+	const [results, setResults] = useState(null);
 
 	const getShows = async () => {
 		const res = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`);
 		const data = await res.json();
-		//console.log(data);
+		console.log(data);
 		setShows(data);
-		console.log(shows);
-		return data;
 	};
 	useEffect(() => {}, [query]);
 
 	const getQuery = val => {
 		setQuery(val);
+	};
+	const getResults = val => {
+		setResults(val);
 	};
 
 	const getId = id => {
@@ -39,6 +41,8 @@ export const ShowProvider = ({ children }) => {
 				getShows,
 				query,
 				getQuery,
+				results,
+				getResults,
 				showId,
 				getId
 			}}
