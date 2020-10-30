@@ -10,10 +10,10 @@
 		"react-router-dom": "^5.1.2",
 		"react-spring": "^8.0.27",
 		"styled-components": "^5.2.1",
-		"swr": "^0.1.13"
+		"swr": "^0.3.5"
 	},
 	"devDependencies": {
-		"babel-plugin-styled-components": "^1.10.6"
+		"babel-plugin-styled-components": "^1.11.1"
 	},
 	"scripts": {
 		"dev": "next",
