@@ -1,12 +1,12 @@
 import App from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { ShowProvider } from '../src/context/ShowContext';
+import { ShowProvider } from '../context/ShowContext';
 
 const theme = {
 	colors: {
-		primary: '#0070f3'
-	}
+		primary: '#0070f3',
+	},
 };
 
 export default class MyApp extends App {

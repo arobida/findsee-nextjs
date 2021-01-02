@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
-import { ShowContext } from '../src/context/ShowContext';
-import Layout from '../src/components/Layout';
+import { ShowContext } from '../context/ShowContext';
+import Layout from '../components/Layout';
 
 const Index = () => {
 	const { shows } = useContext(ShowContext);
@@ -12,8 +12,8 @@ const Index = () => {
 					<h2 className="loader">Waiting For Your Search...</h2>
 				</div>
 			) : (
-				shows.map(i => {
-					const strip = html => {
+				shows.map((i) => {
+					const strip = (html) => {
 						var temporalDivElement = document.createElement('div');
 						temporalDivElement.innerHTML = html;
 						return (
@@ -34,7 +34,7 @@ const Index = () => {
 						imgSrc: i.show.image
 							? i.show.image.medium
 							: 'https://static.tvmaze.com/images/no-img/no-img-portrait-text.png',
-						sum: strip(i.show.summary)
+						sum: strip(i.show.summary),
 					};
 					return (
 						<div className="show" key={item.key}>
