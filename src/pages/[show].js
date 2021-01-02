@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { ShowContext } from '../src/context/ShowContext';
-import Layout from '../src/components/Layout';
+import { ShowContext } from '../context/ShowContext';
+import Layout from '../components/Layout';
 
 const Show = () => {
 	const router = useRouter();
-	const query = router.query.show
+	const query = router.query.show;
 	const [show, setShow] = useState({});
 	console.log('router', router);
 	const getShow = async () => {
@@ -53,7 +53,7 @@ const Show = () => {
 				<h6>
 					Days -{' '}
 					{show.schedule &&
-						show.schedule.days.map(day =>
+						show.schedule.days.map((day) =>
 							show.schedule.days.length - 1 === show.schedule.days.indexOf(day)
 								? day + ''
 								: day + ', '
